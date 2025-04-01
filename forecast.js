@@ -110,7 +110,7 @@ setInterval(setTime, 1000);
 let button = $(".button");
 let inputValue = $(".inputValue");
 let cnt = 7;
-let apiID = "5731f41f50fb6c63b8d62388f2f1e808";//use own apiID
+let apiID = "70f5d5ca309025898076bdb57dd59bb4";
 let Dt = $("#date");
 let Day = $("#day");
 let Icon = $("#sicon img");
@@ -126,7 +126,7 @@ button.click(function (e) {
   loader.show();
   fetch(
     // `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={API key}`
-    `https:api.openweathermap.org/data/2.5/forecast?q=${inputValue.val()}&exclude=hourly&appid=${apiID}`
+       `https://api.openweathermap.org/data/2.5/forecast?q=${inputValue.val()}&appid=${apiID}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -205,7 +205,7 @@ $(document).ready(function () {
         window.localStorage.long = long;
 
         fetch(
-          `https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}`
+         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiID}`
         )
           .then((response) => response.json())
           .then((data) => {
@@ -262,7 +262,7 @@ $(document).ready(function () {
                 <tr align="center">
                   <th scope="row" class="date">${mon} ${day}</th>
                   
-                  <td><img src="icon/${icon}.png" alt="icon" /></td>
+                  <td><img src="icons/${icon}.png" alt="icon" /></td>
                   <td>${desc}</td>
                   <td>${max}<sub>°C</sub> / ${min}<sub>°C</sub></td>
                 </tr>
@@ -275,7 +275,7 @@ $(document).ready(function () {
     } else {
       let long = window.localStorage.long;
       let lat = window.localStorage.lat;
-      const api = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=b5f558462160da78810acd0bb997a9fd`;
+      const api = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiID}`;
 
       fetch(api)
         .then((response) => {
